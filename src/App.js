@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
+import AppRouter from "./router/AppRouter";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
+  const [data, setData] = useState(null);
+  const [toggle, setToggle] = useState(false);
+
+  const onClick = () => setToggle(prev => !prev);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setData({})
+    }, 500)
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    // <div className="App">
+    //   {toggle === true && <div data-testid="toggle-elem">toggle</div>}
+    //   {data && <div>data</div>}
+    //   <h1>Hello world</h1>
+    //   <button data-testid="toggle-btn" onClick={onClick}>click me</button>
+    //   <input type="text" placeholder="input value" />
+    // </div>
+
+
+    <div>
+        <Navbar />
+        <AppRouter />
     </div>
   );
 }
